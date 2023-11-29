@@ -31,7 +31,7 @@ export const loginUsuario = async (req, res) => {
     if (bcrypt.compareSync(senha, cliente.senha)) {
       const token = jwt.sign({
         cliente_logado_id: cliente.id,
-        cliente_logado_nome: cliente.nome
+        cliente_logado_nome: cliente.email
       },
         process.env.JWT_KEY,
         { expiresIn: "1h" }
