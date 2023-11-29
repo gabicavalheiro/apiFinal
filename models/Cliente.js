@@ -19,10 +19,13 @@ export const Cliente = sequelize.define('cliente', {
   },
   senha: {
     type: DataTypes.STRING(60),
-    allowNull: false
+    allowNull: false,
+   
   },
+}, {
+  paranoid: true,
+  timestamps: false,
 });
-
 // Hook (gancho) do Sequelize que é executado antes 
 // da inserção de um registro.
 // Faz a criptografia da senha e atribui o hash ao campo senha

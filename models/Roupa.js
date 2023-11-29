@@ -44,5 +44,6 @@ export const Roupa = sequelize.define('roupa', {
     defaultValue: 0
   },
 }, {
-  paranoid: true
+  paranoid: true,
+  timestamps: false,
 });
