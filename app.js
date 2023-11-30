@@ -23,6 +23,7 @@ async function conecta_db() {
     await Cliente.sync()
     await Roupa.sync()
     await Avaliacao.sync()
+
   
   } catch (error) {
     console.error('Erro na conexão com o banco: ', error);

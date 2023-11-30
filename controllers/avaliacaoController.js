@@ -159,3 +159,31 @@ export const dadosGerais = async (req, res) => {
     res.status(400).send(error)
   }
 }
+
+
+export const mostrarComentarios = async (req, res) => {
+  try {
+    // Busca os 4 primeiros comentários na tabela Avaliacao
+    const comentarios = await Avaliacao.findAll({
+      attributes: ['comentario'],
+      include: [
+        {
+          model: Cliente,
+          attributes: ['nome'], // Selecione apenas o campo "nome" da modelo Cliente
+        },
+        {
+          model: Roupa,
+          attributes: ['nome'], // Selecione apenas o campo "nome" da modelo Roupa
+        },
+      ],
+      order: [['id', 'desc']],
+    
+    });
+
+    // Responda com os comentários encontrados
+    res.status(200).json(comentarios);
+  } catch (error) {
+    // Se ocorrer um erro, responda com um status 400 e detalhes do erro
+    res.status(400).json({ id: 0, error: "Erro ao buscar comentários", details: error });
+  }
+};
