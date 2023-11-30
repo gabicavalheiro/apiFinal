@@ -21,7 +21,8 @@ export const Avaliacao = sequelize.define('avaliacao', {
     allowNull: false
   }
 }, {
-  tableName: "avaliacoes"
+  tableName: "avaliacoes",
+  timestamps: false,
 });
 
 Avaliacao.belongsTo(Roupa, {
